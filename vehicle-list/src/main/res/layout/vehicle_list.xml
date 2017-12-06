@@ -5,6 +5,15 @@
                                              android:background="@color/black_dark"
                                              android:orientation="vertical">
 
-  <include layout="@layout/toolbar" />
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/vehicleList"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/margin_top_list"
+      android:paddingTop="20dp" />
+
+  <include
+      android:id="@+id/topToolbar"
+      layout="@layout/toolbar" />
 
 </android.support.constraint.ConstraintLayout>

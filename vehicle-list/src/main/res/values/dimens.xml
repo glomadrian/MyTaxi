@@ -1,0 +1,5 @@
+<resources>
+  <dimen name="toolbar_height">70dp</dimen>
+  <dimen name="toolbar_curve">20dp</dimen>
+  <dimen name="margin_top_list">50dp</dimen>
+</resources>
