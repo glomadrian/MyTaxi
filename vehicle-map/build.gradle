@@ -1,20 +1,8 @@
 apply from: "${rootDir}/build-configuration/android-module-base.gradle"
 
 dependencies {
-  api project(':domain-logic')
-  api project(':custom-views')
+  implementation project(':core-presentation')
   implementation project(":core")
-
-  api ankoListeners
-  api ankoCommon
-  api ankoRecyclerView
-  api picasso
-  api appCompat
-  api design
-  api recyclerView
-  api contraintLayout
-  api cardView
-  api anko
 
   kapt daggerAnotationProcessor
 
@@ -22,6 +10,7 @@ dependencies {
   androidTestImplementation runner
   androidTestImplementation espressoCore
 }
+
 repositories {
   mavenCentral()
 }

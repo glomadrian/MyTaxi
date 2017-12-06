@@ -41,6 +41,7 @@ ext {
   coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}"
   coroutinesReactive = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${coroutinesVersion}"
   ankoCoroutines = "org.jetbrains.anko:anko-coroutines:${ankoVersion}"
+  anko = "org.jetbrains.anko:anko:$ankoVersion"
   ankoListeners = "org.jetbrains.anko:anko-sdk25-coroutines:$ankoVersion"
   ankoCommon = "org.jetbrains.anko:anko-common:${ankoVersion}"
   ankoAppCompat = "org.jetbrains.anko:anko-appcompat-v7:${ankoVersion}"
