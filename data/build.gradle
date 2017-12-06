@@ -1,14 +1,15 @@
 apply from: "${rootDir}/build-configuration/android-module-base.gradle"
 
 dependencies {
-  api funktionaleTry
-  api dagger
-  api kotlinStdLib
-  api coroutinesCore
-  api coroutinesReactive
+  api project(":domain-core")
+  api project(":api")
+  implementation project(":core")
 
   kapt daggerAnotationProcessor
+
+  testImplementation junit
 }
+
 repositories {
   mavenCentral()
 }

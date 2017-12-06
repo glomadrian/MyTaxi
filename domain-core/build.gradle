@@ -1,12 +1,7 @@
 apply from: "${rootDir}/build-configuration/android-module-base.gradle"
 
 dependencies {
-  api funktionaleTry
-  api dagger
-  api kotlinStdLib
-  api coroutinesCore
-  api coroutinesReactive
-
+  implementation project (":core")
   kapt daggerAnotationProcessor
 }
 repositories {
