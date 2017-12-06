@@ -25,10 +25,4 @@ abstract class Presenter<T> {
             : Deferred<T> = async(presenterJob + context) {
         block()
     }
-
-    protected fun main(context: CoroutineContext = MAIN,
-                       block: suspend CoroutineScope.() -> T): Job =
-            launch(presenterJob + context) {
-                block
-            }
 }
