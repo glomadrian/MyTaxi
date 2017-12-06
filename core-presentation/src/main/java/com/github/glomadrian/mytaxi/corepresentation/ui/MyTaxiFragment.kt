@@ -25,7 +25,13 @@ abstract class MyTaxiFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onAttachPresenter()
         onViewReady(savedInstanceState)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onDetachPresenter()
     }
 
     protected abstract fun doInjection(applicationComponent: ApplicationComponent)
@@ -34,4 +40,8 @@ abstract class MyTaxiFragment: Fragment() {
     abstract fun onRequestLayoutResource(): Int
 
     abstract fun onViewReady(savedInstanceState: Bundle?)
+
+    abstract fun onAttachPresenter()
+
+    abstract fun onDetachPresenter()
 }

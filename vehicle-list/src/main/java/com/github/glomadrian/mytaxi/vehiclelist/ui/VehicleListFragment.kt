@@ -33,7 +33,6 @@ class VehicleListFragment: MyTaxiFragment(), VehicleListPresenter.View {
     override fun onViewReady(savedInstanceState: Bundle?) {
         initializeToolbar()
         initializeList()
-        presenter.onAttach(this)
         presenter.onViewReady()
     }
 
@@ -54,5 +53,13 @@ class VehicleListFragment: MyTaxiFragment(), VehicleListPresenter.View {
 
     override fun renderVehicles(vehicles: List<ListableVehicleViewModel>) {
         vehicleAdapter.addVehicles(vehicles)
+    }
+
+    override fun onAttachPresenter() {
+        presenter.onAttach(this)
+    }
+
+    override fun onDetachPresenter() {
+        presenter.onDetach()
     }
 }

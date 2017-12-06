@@ -50,7 +50,6 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     }
 
     private fun initPresenter() {
-        presenter.onAttach(this)
         vehicleId?.let {
             presenter.onVehicleId(it)
         } ?: activity?.finish()
@@ -109,5 +108,13 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         vehicleId?.let {
             childFragmentManager.replaceAndCommit(R.id.infoContainer, VehicleInfoFragment.newInstance(it))
         }
+    }
+
+    override fun onAttachPresenter() {
+        presenter.onAttach(this)
+    }
+
+    override fun onDetachPresenter() {
+        presenter.onDetach()
     }
 }

@@ -35,7 +35,6 @@ class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
 
     override fun onViewReady(savedInstanceState: Bundle?) {
         vehicleId?.let {
-            presenter.onAttach(this)
             presenter.onVehicleIdAvailable(it)
         }
     }
@@ -54,5 +53,13 @@ class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
         interiorState.setImageResource(vehicle.interior.iconResource)
         exteriorState.setImageResource(vehicle.exterior.iconResource)
         name.text = vehicle.name
+    }
+
+    override fun onAttachPresenter() {
+        presenter.onAttach(this)
+    }
+
+    override fun onDetachPresenter() {
+        presenter.onDetach()
     }
 }
