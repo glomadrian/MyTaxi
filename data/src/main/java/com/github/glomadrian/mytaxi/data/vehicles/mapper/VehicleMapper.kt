@@ -17,7 +17,7 @@ internal fun toDomain(source: VehicleApiModel) = Vehicle(
         mapEngine(source.engineType)
 )
 
-private fun mapLocation(location: List<Double>) = GeoLocation(location[0], location[1])
+private fun mapLocation(location: List<Double>) = GeoLocation(location[1], location[0])
 
 private fun mapStatus(status: VehicleApiModel.State) =
     when (status) {

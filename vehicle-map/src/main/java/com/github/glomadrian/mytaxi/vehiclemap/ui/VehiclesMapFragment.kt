@@ -1,6 +1,5 @@
 package com.github.glomadrian.mytaxi.vehiclemap.ui
 
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.view.View
@@ -8,12 +7,25 @@ import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationCom
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
 import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
+import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
+import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.SelectedLocationViewModel
+import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.vehicles_map.*
 import org.jetbrains.anko.support.v4.withArguments
+import javax.inject.Inject
 
-class VehiclesMapFragment: MyTaxiFragment() {
+class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     private val vehicleId by lazy { arguments?.getString(VEHICLE_ID) }
+    @Inject lateinit var presenter: VehicleMapPresenter
+    private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment }
+    private lateinit var googleMap: GoogleMap
 
     companion object {
         private const val VEHICLE_ID = "vehicle.id.key"
@@ -32,6 +44,22 @@ class VehiclesMapFragment: MyTaxiFragment() {
     override fun onViewReady(savedInstanceState: Bundle?) {
         bottomSheetBehavior = BottomSheetBehavior.from(vehicleInfoContainer)
         setupBottomSheetBehaviour()
+        initMap()
+    }
+
+    private fun initPresenter() {
+        presenter.onAttach(this)
+        vehicleId?.let {
+            presenter.onVehicleId(it)
+        } ?: activity?.finish()
+    }
+
+    private fun initMap() {
+        mapFragment.getMapAsync { googleMap ->
+            this.googleMap = googleMap
+            initPresenter()
+        }
+
     }
 
     private fun setupBottomSheetBehaviour() {
@@ -50,5 +78,19 @@ class VehiclesMapFragment: MyTaxiFragment() {
         orderAction.translationY = vehicleInfoContainer.curvedMiddlePoint.y
     }
 
+    override fun renderVehicleLocations(locations: List<VehicleLocationViewModel>) {
+        locations.forEach {
+            googleMap.addMarker(MarkerOptions().position(LatLng(it.latitude, it.longitude)))
+        }
+    }
 
+    override fun renderSelectedLocation(selectedLocationViewModel: SelectedLocationViewModel) {
+        selectedLocationViewModel.apply {
+            val cameraPosition = CameraPosition.builder()
+                    .target(LatLng(latitude, longitude))
+                    .zoom(16.toFloat())
+                    .build()
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+        }
+    }
 }
