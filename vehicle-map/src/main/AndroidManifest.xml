@@ -1,2 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.github.glomadrian.vehicle_map" />
+          package="com.github.glomadrian.vehicle_map">
+
+  <application>
+    <activity android:name="com.github.glomadrian.mytaxi.vehiclemap.ui.VehicleMapContainer">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="mytaxi" android:host="vehicles-map" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>
