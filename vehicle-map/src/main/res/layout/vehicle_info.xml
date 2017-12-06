@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             android:background="@color/main_yellow"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             tools:background="@color/black_dark"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
+  <android.support.constraint.Guideline
+      android:id="@+id/guideline"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.2" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/taxiDriver"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginStart="16dp"
+      android:text="@string/taxiDriver"
+      android:textColor="@color/gray"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/guideline"
+      android:layout_marginLeft="16dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/driverName"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginStart="16dp"
+      tools:text="Bruce wayne"
+      android:textColor="@color/gray"
+      app:layout_constraintStart_toEndOf="@id/taxiDriver"
+      app:layout_constraintTop_toBottomOf="@id/guideline"
+      android:layout_marginLeft="6dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/distance"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginStart="16dp"
+      android:text="@string/distance"
+      android:textColor="@color/gray"
+      android:textStyle="bold"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/driverName"
+      android:layout_marginLeft="16dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/distanceValue"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginTop="8dp"
+      android:textColor="@color/gray"
+      app:layout_constraintStart_toStartOf="@+id/driverName"
+      app:layout_constraintTop_toBottomOf="@id/driverName"
+      tools:text="100 meters" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/direction"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginStart="16dp"
+      android:text="@string/direction"
+      android:textColor="@color/gray"
+      android:textStyle="bold"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/distance"
+      android:layout_marginLeft="16dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/directionValue"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginTop="8dp"
+      android:textColor="@color/gray"
+      app:layout_constraintStart_toStartOf="@+id/distanceValue"
+      app:layout_constraintTop_toBottomOf="@id/distanceValue"
+      android:maxEms="10"
+      android:maxLines="1"
+      android:ellipsize="end"
+      tools:text="Fake street 123" />
+
+  <android.support.v7.widget.AppCompatImageView
+      app:layout_constraintTop_toTopOf="@id/driverName"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="@id/directionValue"
+      tools:src="@drawable/common_google_signin_btn_icon_dark"
+      android:layout_width="80dp"
+      android:layout_height="0dp" />
 </android.support.constraint.ConstraintLayout>
