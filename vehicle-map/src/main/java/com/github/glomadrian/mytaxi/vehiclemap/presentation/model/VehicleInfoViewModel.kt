@@ -6,6 +6,6 @@ data class VehicleInfoViewModel(
         val fuelPercent: Int,
         val distanceInMeters: Int,
         val direction: String,
-        val interior: StatusIcon,
-        val exterior: StatusIcon
+        val interior: StatusIconViewModel,
+        val exterior: StatusIconViewModel
         )

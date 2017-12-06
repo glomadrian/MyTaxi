@@ -1,24 +1,31 @@
 package com.github.glomadrian.mytaxi.vehiclemap.presentation
 
+import com.github.glomadrian.mytaxi.core.MAIN
 import com.github.glomadrian.mytaxi.corepresentation.presentation.Presenter
+import com.github.glomadrian.mytaxi.domainlogic.usecase.vehiclemap.GetVehicleUseCase
+import com.github.glomadrian.mytaxi.vehiclemap.presentation.mapper.mapToVehicleInfo
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.DriverViewModel
-import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.StatusIcon
+import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.StatusIconViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleInfoViewModel
+import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
 
-class VehicleInfoPresenter @Inject constructor(): Presenter<VehicleInfoPresenter.View>() {
+class VehicleInfoPresenter @Inject constructor(
+        private val getVehicleUseCase: GetVehicleUseCase)
+    : Presenter<VehicleInfoPresenter.View>() {
 
     fun onVehicleIdAvailable(id: String) {
-        //Moc
+        launch(MAIN) {
+            getVehicle(id).await()
+                    .onSuccess { view?.renderVehicleInfo(it) }
+        }
+
         view?.renderDriver(DriverViewModel("Adrian",
                 "https://avatars2.githubusercontent.com/u/5353046?s=460&v=4"))
-        view?.renderVehicleInfo(VehicleInfoViewModel("1",
-                "xFg4Jam112333",
-                60,
-                200,
-                "fake streen 123, 123",
-                StatusIcon.BAD,
-                StatusIcon.REALLY_GOOD))
+    }
+
+    private fun getVehicle(id: String) = bg{
+        getVehicleUseCase.execute(id).map { mapToVehicleInfo(it) }
     }
 
     interface View {

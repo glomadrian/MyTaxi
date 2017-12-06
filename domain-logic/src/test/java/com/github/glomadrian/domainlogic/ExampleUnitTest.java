@@ -1,4 +1,4 @@
-package com.github.glomadrian.domain_logic;
+package com.github.glomadrian.domainlogic;
 
 import org.junit.Test;
 
