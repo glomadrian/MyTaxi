@@ -10,6 +10,7 @@ import dagger.Component
 @PerApp
 @Component(modules = [(ApplicationModule::class), (DataModule::class), (ApiModule::class)])
 interface ApplicationComponent {
+
     fun inject(myTaxiApplication: MyTaxiApplication)
     fun getMyTaxiApplication(): MyTaxiApplication
 }

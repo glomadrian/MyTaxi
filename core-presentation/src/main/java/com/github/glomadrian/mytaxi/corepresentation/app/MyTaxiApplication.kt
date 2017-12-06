@@ -3,13 +3,18 @@ package com.github.glomadrian.mytaxi.corepresentation.app
 import android.app.Application
 import com.github.glomadrian.mytaxi.core.BACKGROUND
 import com.github.glomadrian.mytaxi.core.MAIN
-import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
+import com.github.glomadrian.mytaxi.corepresentation.di.component.DaggerApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.di.module.ApplicationModule
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.newFixedThreadPoolContext
 
 class MyTaxiApplication : Application() {
-    private var applicationComponent: ApplicationComponent? = null
+
+    val applicationComponent by lazy {
+        DaggerApplicationComponent
+                .builder()
+                .applicationModule(ApplicationModule(this)).build()
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -23,11 +28,6 @@ class MyTaxiApplication : Application() {
     }
 
     private fun inject() {
-        applicationComponent = DaggerApplicationComponent
-                .builder()
-                .applicationModule(ApplicationModule(this)).build()
         applicationComponent!!.inject(this)
     }
-
-    fun getApplicationCommponent() = applicationComponent
 }
