@@ -9,7 +9,6 @@ import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
 import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
-import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.SelectedLocationViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -30,6 +29,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
 
     companion object {
         private const val MAP_ZOOM = 16.toFloat()
+        private const val MAP_OFFSET_Y = 60.toFloat()
         private const val VEHICLE_ID = "vehicle.id.key"
 
         fun newInstance(vehicleId: String) = VehiclesMapFragment().withArguments(
@@ -82,19 +82,28 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
 
     override fun renderVehicleLocations(locations: List<VehicleLocationViewModel>) {
         locations.forEach {
-            googleMap.addMarker(MarkerOptions().position(LatLng(it.latitude, it.longitude)))
+            addMarkerForVehicle(it)
         }
     }
 
-    override fun renderSelectedLocation(selectedLocationViewModel: SelectedLocationViewModel) {
-        selectedLocationViewModel.apply {
+    override fun renderSelectedLocation(selectedVehicle: VehicleLocationViewModel) {
+        addMarkerForVehicle(selectedVehicle).showInfoWindow()
+        selectedVehicle.apply {
             val cameraPosition = CameraPosition.builder()
                     .target(LatLng(latitude, longitude))
                     .zoom(MAP_ZOOM)
                     .build()
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+            googleMap.moveCamera(CameraUpdateFactory.scrollBy(0.toFloat(), MAP_OFFSET_Y))
         }
     }
+
+    private fun addMarkerForVehicle(vehicleLocation: VehicleLocationViewModel) =
+            googleMap.addMarker(MarkerOptions()
+                    .position(LatLng(vehicleLocation.latitude, vehicleLocation.longitude))
+                    .visible(true)
+                    .title(vehicleLocation.name)
+            )
 
     private fun updateVehicleView() {
         vehicleId?.let {

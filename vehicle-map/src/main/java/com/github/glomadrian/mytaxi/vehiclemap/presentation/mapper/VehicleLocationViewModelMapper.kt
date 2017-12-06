@@ -6,4 +6,5 @@ import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocatio
 fun toVehicleLocation(source: Vehicle) = VehicleLocationViewModel(
         source.id,
         source.location.latitude,
-        source.location.longitude)
+        source.location.longitude,
+        source.name)
