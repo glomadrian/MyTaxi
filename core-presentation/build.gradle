@@ -13,6 +13,7 @@ dependencies {
   api design
   api recyclerView
   api contraintLayout
+  api cardView
 
   kapt daggerAnotationProcessor
 

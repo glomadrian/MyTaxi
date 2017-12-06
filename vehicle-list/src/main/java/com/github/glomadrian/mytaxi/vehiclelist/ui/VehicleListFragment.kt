@@ -2,19 +2,22 @@ package com.github.glomadrian.mytaxi.vehiclelist.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
+import android.support.v7.widget.LinearLayoutManager
 import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclelist.R
 import com.github.glomadrian.mytaxi.vehiclelist.di.DaggerVehicleListComponent
 import com.github.glomadrian.mytaxi.vehiclelist.presentation.VehicleListPresenter
 import com.github.glomadrian.mytaxi.vehiclelist.presentation.model.ListableVehicleViewModel
+import com.github.glomadrian.mytaxi.vehiclelist.ui.adapter.VehicleAdapter
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.vehicle_list.*
 import javax.inject.Inject
 
 class VehicleListFragment: MyTaxiFragment(), VehicleListPresenter.View {
 
     @Inject lateinit var presenter: VehicleListPresenter
+    val vehicleAdapter by lazy { VehicleAdapter() }
 
     companion object {
         fun newInstance() = VehicleListFragment()
@@ -29,6 +32,7 @@ class VehicleListFragment: MyTaxiFragment(), VehicleListPresenter.View {
 
     override fun onViewReady(savedInstanceState: Bundle?) {
         initializeToolbar()
+        initializeList()
         presenter.onAttach(this)
         presenter.onViewReady()
     }
@@ -43,7 +47,12 @@ class VehicleListFragment: MyTaxiFragment(), VehicleListPresenter.View {
         }
     }
 
+    private fun initializeList(){
+        vehicleList.layoutManager = LinearLayoutManager(context)
+        vehicleList.adapter = vehicleAdapter
+    }
+
     override fun renderVehicles(vehicles: List<ListableVehicleViewModel>) {
-        Toast.makeText(this.context, "Render ${vehicles.size}", Toast.LENGTH_LONG).show()
+        vehicleAdapter.addVehicles(vehicles)
     }
 }
