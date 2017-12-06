@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.view.View
 import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
+import com.github.glomadrian.mytaxi.corepresentation.extensions.replaceAndCommit
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
 import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.SelectedLocationViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
+import com.github.glomadrian.mytaxi.vehiclemap.ui.vehicleinfo.VehicleInfoFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -28,6 +30,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     private lateinit var googleMap: GoogleMap
 
     companion object {
+        private const val MAP_ZOOM = 16.toFloat()
         private const val VEHICLE_ID = "vehicle.id.key"
 
         fun newInstance(vehicleId: String) = VehiclesMapFragment().withArguments(
@@ -58,8 +61,8 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         mapFragment.getMapAsync { googleMap ->
             this.googleMap = googleMap
             initPresenter()
+            updateVehicleView()
         }
-
     }
 
     private fun setupBottomSheetBehaviour() {
@@ -88,9 +91,15 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         selectedLocationViewModel.apply {
             val cameraPosition = CameraPosition.builder()
                     .target(LatLng(latitude, longitude))
-                    .zoom(16.toFloat())
+                    .zoom(MAP_ZOOM)
                     .build()
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+        }
+    }
+
+    private fun updateVehicleView() {
+        vehicleId?.let {
+            childFragmentManager.replaceAndCommit(R.id.infoContainer, VehicleInfoFragment.newInstance(it))
         }
     }
 }

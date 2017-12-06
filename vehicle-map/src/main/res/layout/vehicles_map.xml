@@ -50,6 +50,11 @@
     </FrameLayout>
 
 
+    <FrameLayout
+        android:id="@+id/infoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
   </com.github.glomadrian.customviews.curvedlayout.CurvedLayout>
 
 
