@@ -1,0 +1,16 @@
+apply from: "${rootDir}/build-configuration/android-module-base.gradle"
+
+dependencies {
+  api appCompat
+  api design
+  api funktionaleTry
+  api dagger
+  api kotlinStdLib
+  api coroutinesCore
+  api coroutinesReactive
+
+  kapt daggerAnotationProcessor
+}
+repositories {
+  mavenCentral()
+}
