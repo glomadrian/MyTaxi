@@ -5,4 +5,5 @@ import org.funktionale.tries.Try
 
 interface VehicleRepository {
     fun getAvailableVehicles() : Try<List<Vehicle>>
+    fun getVehicle(id: String): Try<Vehicle>
 }
