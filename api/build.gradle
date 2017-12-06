@@ -1,0 +1,19 @@
+apply from: "${rootDir}/build-configuration/android-module-base.gradle"
+
+dependencies {
+  implementation project(":core")
+
+  implementation retrofit
+  implementation okHttp
+  implementation gsonConverter
+  implementation jsoup
+
+  kapt daggerAnotationProcessor
+
+  testImplementation junit
+  androidTestImplementation runner
+  androidTestImplementation espressoCore
+}
+repositories {
+  mavenCentral()
+}
