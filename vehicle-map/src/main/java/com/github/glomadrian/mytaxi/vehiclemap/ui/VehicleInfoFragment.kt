@@ -16,10 +16,11 @@ import javax.inject.Inject
 
 class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
     @Inject lateinit var presenter: VehicleInfoPresenter
-    private val vehicleId by lazy { arguments?.getString(VehicleInfoFragment.VEHICLE_ID)  }
+    private val vehicleId by lazy { arguments?.getString(VehicleInfoFragment.VEHICLE_ID) }
 
     companion object {
         private const val VEHICLE_ID = "vehicle.id.key"
+        private const val ANIMATION_TIMME = 4000.toLong()
 
         fun newInstance(vehicleId: String) = VehicleInfoFragment().withArguments(
                 VEHICLE_ID to vehicleId
@@ -49,7 +50,7 @@ class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
         directionValue.text = vehicle.direction
         fuelChart.setFirstValuePercent(vehicle.fuelPercent)
         fuelChart.setSecondValuePercent(0)
-        fuelChart.startAnimation()
+        fuelChart.startAnimation(ANIMATION_TIMME)
         interiorState.setImageResource(vehicle.interior.iconResource)
         exteriorState.setImageResource(vehicle.exterior.iconResource)
         name.text = vehicle.name

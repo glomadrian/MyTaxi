@@ -5,6 +5,7 @@ import com.github.glomadrian.mytaxi.core.di.scopes.PerApp
 import com.github.glomadrian.mytaxi.corepresentation.app.MyTaxiApplication
 import com.github.glomadrian.mytaxi.corepresentation.di.module.ApplicationModule
 import com.github.glomadrian.mytaxi.data.di.DataModule
+import com.github.glomadrian.mytaxi.domaincore.repository.DriverRepository
 import com.github.glomadrian.mytaxi.domaincore.repository.VehicleRepository
 import dagger.Component
 
@@ -16,4 +17,5 @@ interface ApplicationComponent {
 
     fun getMyTaxiApplication(): MyTaxiApplication
     fun getVehicleRepository(): VehicleRepository
+    fun getDriverRepository(): DriverRepository
 }
