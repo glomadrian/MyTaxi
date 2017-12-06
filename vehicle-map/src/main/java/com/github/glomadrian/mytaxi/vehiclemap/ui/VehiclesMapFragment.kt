@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
+import com.github.glomadrian.mytaxi.vehiclemap.R
 import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
-import com.github.glomadrian.vehicle_map.R
 import org.jetbrains.anko.support.v4.withArguments
 
 class VehiclesMapFragment: MyTaxiFragment() {

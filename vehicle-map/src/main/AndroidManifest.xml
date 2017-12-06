@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.github.glomadrian.vehicle_map">
+          package="com.github.glomadrian.mytaxi.vehiclemap">
 
   <application>
     <activity android:name="com.github.glomadrian.mytaxi.vehiclemap.ui.VehicleMapContainer">

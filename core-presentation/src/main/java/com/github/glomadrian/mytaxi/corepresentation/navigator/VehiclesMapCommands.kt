@@ -7,7 +7,7 @@ val vehiclesMapNavigationCommand: (String) -> NavigatorCommand = { vehicleId ->
         Uri.Builder()
                 .scheme(schema)
                 .authority("vehicles-map")
-                .appendQueryParameter("id", vehicleId)
+                .appendQueryParameter("vehicle.id.key", vehicleId)
                 .build()
     }
     command

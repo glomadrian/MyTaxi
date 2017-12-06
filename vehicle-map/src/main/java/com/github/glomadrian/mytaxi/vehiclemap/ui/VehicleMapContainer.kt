@@ -4,7 +4,7 @@ import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiActivity
 
 class VehicleMapContainer: MyTaxiActivity() {
 
-    private val vehicleId by lazy { intent.getStringExtra(VEHICLE_ID) }
+    private val vehicleId by lazy { intent.data.getQueryParameter(VEHICLE_ID) }
 
     companion object {
         private const val VEHICLE_ID = "vehicle.id.key"
