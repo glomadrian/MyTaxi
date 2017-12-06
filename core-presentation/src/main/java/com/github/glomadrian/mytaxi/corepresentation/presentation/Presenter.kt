@@ -6,6 +6,7 @@ import kotlinx.coroutines.experimental.*
 import kotlin.coroutines.experimental.CoroutineContext
 
 abstract class Presenter<T> {
+
     protected var view: T? = null
     private val presenterJob = Job()
 

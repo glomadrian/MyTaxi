@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="CurvedLayout">
+    <attr name="curved_layout_curve_length" format="dimension"/>
+    <attr name="curved_layout_stroke_width" format="dimension"/>
+    <attr name="curved_layout_color" format="color"/>
+    <attr name="curved_layout_pressed_color" format="color"/>
+    <attr name="curved_layout_stroke_color" format="color"/>
+  </declare-styleable>
+</resources>

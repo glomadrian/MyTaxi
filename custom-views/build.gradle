@@ -1,0 +1,11 @@
+apply from: "${rootDir}/build-configuration/android-module-base.gradle"
+
+dependencies {
+  kapt daggerAnotationProcessor
+
+  testImplementation junit
+}
+
+repositories {
+  mavenCentral()
+}
