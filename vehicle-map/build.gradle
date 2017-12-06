@@ -4,6 +4,8 @@ dependencies {
   implementation project(':core-presentation')
   implementation project(":core")
 
+  implementation googleMaps
+
   kapt daggerAnotationProcessor
 
   testImplementation junit

@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:clipChildren="false"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+  <fragment
+      android:id="@+id/map"
+      android:name="com.google.android.gms.maps.SupportMapFragment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
+
+  <com.github.glomadrian.customviews.curvedlayout.CurvedLayout
+      android:clipChildren="false"
+      android:id="@+id/vehicleInfoContainer"
+      android:layout_width="match_parent"
+      android:layout_height="320dp"
+      android:layout_alignParentBottom="true"
+      app:behavior_hideable="false"
+      app:behavior_peekHeight="150dp"
+      app:curved_layout_color="@color/vehicle_info_background"
+      app:curved_layout_curve_length="80dp"
+      app:curved_layout_stroke_width="6dp"
+      app:curved_layout_stroke_color="@color/main_yellow"
+      app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+    <FrameLayout
+        android:clipChildren="false"
+        android:id="@+id/orderAction"
+        android:layout_marginTop="-20dp"
+        android:layout_gravity="top|center"
+        android:layout_width="120dp"
+        android:translationY="40dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/rounded_button_bg"
+        android:layout_height="40dp">
+
+      <android.support.v7.widget.AppCompatTextView
+          android:layout_gravity="center"
+          android:text="Order"
+          android:textStyle="bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+    </FrameLayout>
+
+
+  </com.github.glomadrian.customviews.curvedlayout.CurvedLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

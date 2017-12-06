@@ -6,7 +6,6 @@ dependencies {
   implementation retrofit
   implementation okHttp
   implementation gsonConverter
-  implementation jsoup
 
   kapt daggerAnotationProcessor
 

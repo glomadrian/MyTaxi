@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import android.graphics.Region;
 import android.util.AttributeSet;
@@ -25,6 +26,7 @@ public class CurvedLayout extends FrameLayout {
   private float strokeWidth = 20;
   private int strokeColor = Color.BLUE;
   private ValueAnimator valueAnimator;
+  private MiddlePointListener middlePointListener;
 
   public CurvedLayout(Context context) {
     super(context);
@@ -137,7 +139,7 @@ public class CurvedLayout extends FrameLayout {
     return path;
   }
 
-  public void setCurvePercent(int percent){
+  public void setCurvePercent(int percent) {
     valueAnimator.setCurrentPlayTime(percent);
   }
 
@@ -154,10 +156,38 @@ public class CurvedLayout extends FrameLayout {
         curveLength = (float) animation.getAnimatedValue();
         strokePath = generateStrokePath(getWidth(), getHeight());
         basePath = generateCurvedPath(getWidth(), getHeight());
+        if (middlePointListener != null) {
+          middlePointListener.onUpdate(getMiddlePoint());
+        }
         invalidate();
       }
     });
     valueAnimator.setDuration(100);
     return valueAnimator;
+  }
+
+  private FloatPoint getMiddlePoint() {
+    float[] coordinates = getPathCoordinates(strokePath, 0.5f);
+    FloatPoint point = new FloatPoint(coordinates[0], coordinates[1]);
+    return point;
+  }
+
+  private float[] getPathCoordinates(Path path, float fraction) {
+    float aCoordinates[] = { 0f, 0f };
+    PathMeasure pm = new PathMeasure(path, false);
+    pm.getPosTan(pm.getLength() * fraction, aCoordinates, null);
+    return aCoordinates;
+  }
+
+  public void setMiddlePointListener(MiddlePointListener middlePointListener) {
+    this.middlePointListener = middlePointListener;
+  }
+
+  public FloatPoint getCurvedMiddlePoint() {
+    return getMiddlePoint();
+  }
+
+  public interface MiddlePointListener {
+    void onUpdate(FloatPoint point);
   }
 }
