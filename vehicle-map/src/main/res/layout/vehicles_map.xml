@@ -57,5 +57,8 @@
 
   </com.github.glomadrian.customviews.curvedlayout.CurvedLayout>
 
+  <include
+      android:id="@+id/topToolbar"
+      layout="@layout/toolbar" />
 
 </android.support.design.widget.CoordinatorLayout>

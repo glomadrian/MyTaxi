@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="vehicle_info_background">#dc383838</color>
+  <color name="fuel_amount">#ACACAC</color>
+  <color name="fuel_no_value">#636363</color>
 </resources>

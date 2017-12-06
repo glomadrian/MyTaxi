@@ -7,4 +7,15 @@
     <attr name="curved_layout_pressed_color" format="color"/>
     <attr name="curved_layout_stroke_color" format="color"/>
   </declare-styleable>
+
+  <declare-styleable name="CircularChart">
+    <attr name="circular_chart_stroke_width" format="dimension"/>
+    <attr name="circular_chart_first_arc_color" format="color"/>
+    <attr name="circular_chart_second_arc_color" format="color"/>
+    <attr name="circular_chart_no_value_arc_color" format="color"/>
+    <attr name="circular_chart_separators_arc_angle" format="integer"/>
+    <attr name="circular_chart_global_percent_text_size" format="dimension"/>
+    <attr name="circular_chart_global_percent_text_color" format="color"/>
+  </declare-styleable>
+
 </resources>

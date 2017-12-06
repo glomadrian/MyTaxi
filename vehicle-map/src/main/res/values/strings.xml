@@ -3,4 +3,8 @@
   <string name="taxiDriver">Taxi Driver:</string>
   <string name="distance">Distance:</string>
   <string name="direction">Direction:</string>
+  <string name="distanceString">%1$s meters</string>
+  <string name="fuel">Fuel</string>
+  <string name="interior">Interior</string>
+  <string name="exterior">Exterior</string>
 </resources>

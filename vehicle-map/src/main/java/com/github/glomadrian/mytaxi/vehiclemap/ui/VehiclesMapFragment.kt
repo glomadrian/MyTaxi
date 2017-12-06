@@ -11,7 +11,6 @@ import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.SelectedLocationViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
-import com.github.glomadrian.mytaxi.vehiclemap.ui.vehicleinfo.VehicleInfoFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment

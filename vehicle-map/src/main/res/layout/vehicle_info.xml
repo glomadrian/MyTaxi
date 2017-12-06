@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
-                                             tools:background="@color/black_dark"
                                              android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+                                             android:layout_height="match_parent"
+                                             tools:background="@color/black_dark">
 
   <android.support.constraint.Guideline
       android:id="@+id/guideline"
@@ -17,37 +17,37 @@
       android:id="@+id/taxiDriver"
       android:layout_width="wrap_content"
       android:layout_height="16dp"
+      android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
       android:text="@string/taxiDriver"
       android:textColor="@color/gray"
       android:textStyle="bold"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/guideline"
-      android:layout_marginLeft="16dp" />
+      app:layout_constraintTop_toBottomOf="@id/guideline" />
 
   <android.support.v7.widget.AppCompatTextView
       android:id="@+id/driverName"
       android:layout_width="wrap_content"
       android:layout_height="16dp"
+      android:layout_marginLeft="6dp"
       android:layout_marginStart="16dp"
-      tools:text="Bruce wayne"
       android:textColor="@color/gray"
       app:layout_constraintStart_toEndOf="@id/taxiDriver"
       app:layout_constraintTop_toBottomOf="@id/guideline"
-      android:layout_marginLeft="6dp" />
+      tools:text="Bruce wayne" />
 
   <android.support.v7.widget.AppCompatTextView
       android:id="@+id/distance"
       android:layout_width="wrap_content"
       android:layout_height="16dp"
+      android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
       android:text="@string/distance"
       android:textColor="@color/gray"
       android:textStyle="bold"
-      android:layout_marginTop="8dp"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/driverName"
-      android:layout_marginLeft="16dp" />
+      app:layout_constraintTop_toBottomOf="@id/driverName" />
 
   <android.support.v7.widget.AppCompatTextView
       android:id="@+id/distanceValue"
@@ -63,33 +63,131 @@
       android:id="@+id/direction"
       android:layout_width="wrap_content"
       android:layout_height="16dp"
+      android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
       android:text="@string/direction"
       android:textColor="@color/gray"
       android:textStyle="bold"
-      android:layout_marginTop="8dp"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/distance"
-      android:layout_marginLeft="16dp" />
+      app:layout_constraintTop_toBottomOf="@id/distance" />
 
   <android.support.v7.widget.AppCompatTextView
       android:id="@+id/directionValue"
       android:layout_width="wrap_content"
       android:layout_height="16dp"
       android:layout_marginTop="8dp"
+      android:ellipsize="end"
+      android:maxEms="10"
+      android:maxLines="1"
       android:textColor="@color/gray"
       app:layout_constraintStart_toStartOf="@+id/distanceValue"
       app:layout_constraintTop_toBottomOf="@id/distanceValue"
-      android:maxEms="10"
-      android:maxLines="1"
-      android:ellipsize="end"
       tools:text="Fake street 123" />
 
   <android.support.v7.widget.AppCompatImageView
-      app:layout_constraintTop_toTopOf="@id/driverName"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintBottom_toBottomOf="@id/directionValue"
-      tools:src="@drawable/common_google_signin_btn_icon_dark"
+      android:id="@+id/driverPhoto"
       android:layout_width="80dp"
-      android:layout_height="0dp" />
+      android:layout_height="0dp"
+      android:layout_marginEnd="28dp"
+      android:layout_marginRight="28dp"
+      app:layout_constraintBottom_toBottomOf="@id/directionValue"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/driverName"
+      app:layout_constraintVertical_bias="0.0"
+      tools:src="@drawable/common_google_signin_btn_icon_dark" />
+
+  <android.support.constraint.Guideline
+      android:id="@+id/guideline2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.45" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/fuel"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:text="@string/fuel"
+      android:textColor="@color/gray"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="@id/fuelChart"
+      app:layout_constraintTop_toBottomOf="@id/guideline2"
+      android:layout_marginLeft="16dp" />
+
+  <com.github.glomadrian.customviews.curvedlayout.CircularChartView
+      android:id="@+id/fuelChart"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="12dp"
+      app:circular_chart_first_arc_color="@color/fuel_amount"
+      app:circular_chart_global_percent_text_color="@color/gray"
+      app:circular_chart_global_percent_text_size="@dimen/text_size_normal"
+      app:circular_chart_no_value_arc_color="@color/fuel_no_value"
+      app:circular_chart_stroke_width="3dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/fuel"
+      android:layout_marginLeft="16dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/interior"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginTop="8dp"
+      android:text="@string/interior"
+      android:textColor="@color/gray"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="@+id/interiorState"
+      app:layout_constraintStart_toStartOf="@+id/interiorState"
+      app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+  <android.support.v7.widget.AppCompatImageView
+      android:id="@+id/interiorState"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginStart="28dp"
+      app:tint="@color/gray"
+      app:layout_constraintStart_toEndOf="@id/fuelChart"
+      app:layout_constraintTop_toTopOf="@id/fuelChart"
+      android:layout_marginLeft="28dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/exterior"
+      android:layout_width="wrap_content"
+      android:layout_height="16dp"
+      android:layout_marginTop="8dp"
+      android:text="@string/exterior"
+      android:textColor="@color/gray"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="@+id/exteriorState"
+      app:layout_constraintStart_toStartOf="@+id/exteriorState"
+      app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+  <android.support.v7.widget.AppCompatImageView
+      android:id="@+id/exteriorState"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginStart="28dp"
+      app:tint="@color/gray"
+      app:layout_constraintStart_toEndOf="@id/interiorState"
+      app:layout_constraintTop_toTopOf="@id/interiorState"
+      android:layout_marginLeft="28dp" />
+
+  <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/name"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:textSize="@dimen/text_size_x_large"
+      android:textStyle="bold"
+      android:layout_marginBottom="12dp"
+      android:padding="12dp"
+      tools:text = "HH-GO8001"
+      android:textColor="@color/gray"
+      android:background="@drawable/square_dash"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
 </android.support.constraint.ConstraintLayout>
