@@ -22,6 +22,6 @@ class VehicleRenderer(prent: ViewGroup) : MyTaxiRenderer<ListableVehicleViewMode
     override fun render(viewModel: ListableVehicleViewModel) {
         view.direction.text = viewModel.direction
         view.icon.setImageResource(viewModel.icon.iconResource)
-        view.vehicleId.text = viewModel.id
+        view.vehicleId.text = viewModel.name
     }
 }

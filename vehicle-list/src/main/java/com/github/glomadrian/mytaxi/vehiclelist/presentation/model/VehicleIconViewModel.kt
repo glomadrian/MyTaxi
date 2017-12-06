@@ -6,5 +6,7 @@ import com.github.glomadrian.mytaxi.vehiclelist.R
 enum class VehicleIconViewModel(@DrawableRes val iconResource: Int) {
     TAXI_ONE(R.drawable.ic_taxi_one),
     TAXI_TWO(R.drawable.ic_taxi_two),
-    TAXI_THREE(R.drawable.ic_taxi_three)
+    TAXI_THREE(R.drawable.ic_taxi_three),
+    TAXI_FOUR(R.drawable.ic_taxi_four),
+    TAXI_FIVE(R.drawable.ic_taxi_five)
 }
