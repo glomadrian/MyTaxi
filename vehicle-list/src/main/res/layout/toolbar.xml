@@ -6,7 +6,10 @@
                                                              android:rotation="180"
                                                              app:curved_layout_color="@color/main_yellow"
                                                              app:curved_layout_curve_length="@dimen/toolbar_curve"
-                                                             app:curved_layout_stroke_width="0dp">
+                                                             app:curved_layout_stroke_width="2dp"
+                                                             app:curved_layout_stroke_color="@color/shadow"
+
+    >
 
   <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
                                      xmlns:app="http://schemas.android.com/apk/res-auto"
