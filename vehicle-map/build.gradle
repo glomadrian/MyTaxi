@@ -4,6 +4,7 @@ dependencies {
   implementation project(':core-presentation')
   implementation project(":core")
 
+  implementation grav
   implementation googleMaps
 
   kapt daggerAnotationProcessor

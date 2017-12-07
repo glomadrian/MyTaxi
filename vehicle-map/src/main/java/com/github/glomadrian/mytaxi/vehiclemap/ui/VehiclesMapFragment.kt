@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.vehicles_map.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.withArguments
 import javax.inject.Inject
 
@@ -47,6 +48,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         bottomSheetBehavior = BottomSheetBehavior.from(vehicleInfoContainer)
         setupBottomSheetBehaviour()
         initMap()
+        initListeners()
     }
 
     private fun initPresenter() {
@@ -60,6 +62,12 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
             this.googleMap = googleMap
             initPresenter()
             updateVehicleView()
+        }
+    }
+
+    private fun initListeners() {
+        orderAction.onClick {
+            TaxiOrderedModalFragment.newInstance().show(childFragmentManager, TaxiOrderedModalFragment::class.java.name)
         }
     }
 

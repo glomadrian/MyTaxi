@@ -7,4 +7,5 @@
   <string name="fuel">Fuel</string>
   <string name="interior">Interior</string>
   <string name="exterior">Exterior</string>
+  <string name="taxi_ordered">Your taxi will arrive soon</string>
 </resources>

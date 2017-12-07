@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="wind">
+    <item>#d2c9c9c9</item>
+    <item>#fafafa</item>
+    <item>#ababab</item>
+    <item>#bce5ff</item>
+  </string-array>
+
+  <string-array name="runAnimations">
+    <item>com.github.glomadrian.grav.generator.animation.SideToSideAnimator</item>
+    <item>com.github.glomadrian.grav.generator.animation.ShakeAnimator</item>
+  </string-array>
+</resources>

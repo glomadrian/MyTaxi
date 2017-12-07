@@ -29,6 +29,7 @@ ext {
   mockitoKotlinVersion = "1.5.0"
   espressoVersion = "3.0.1"
   androidTestVersion = "1.0.1"
+  gravVersion = "1.1"
 
   funktionaleTry = "com.android.support:support-v4:$googleSupportLibraryVersion"
   design = "com.android.support:design:$googleSupportLibraryVersion"
@@ -69,4 +70,5 @@ ext {
   espressoContrib = "com.android.support.test.espresso:espresso-contrib:${espressoVersion}"
   junit = "junit:junit:$junitVersion"
   runner = "com.android.support.test:runner:$runnerVersion"
+  grav = "com.github.glomadrian:Grav:$gravVersion"
 }

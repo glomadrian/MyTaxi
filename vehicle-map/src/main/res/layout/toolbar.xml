@@ -6,24 +6,23 @@
                                                              android:rotation="180"
                                                              app:curved_layout_color="@color/main_yellow"
                                                              app:curved_layout_curve_length="@dimen/toolbar_curve"
-                                                             app:curved_layout_stroke_width="0dp">
+                                                             app:curved_layout_stroke_color="@color/shadow"
+                                                             app:curved_layout_stroke_width="2dp">
 
   <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
                                      xmlns:app="http://schemas.android.com/apk/res-auto"
                                      android:id="@+id/toolbar"
-                                     android:layout_gravity="bottom"
-                                     android:rotation="180"
                                      android:layout_width="match_parent"
-                                     android:layout_height="?attr/actionBarSize" >
+                                     android:layout_height="?attr/actionBarSize"
+                                     android:layout_gravity="bottom"
+                                     android:rotation="180">
 
-      <android.support.v7.widget.AppCompatTextView
-          android:text="@string/app_name"
-          android:layout_gravity="center"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-          />
-
+    <android.support.v7.widget.AppCompatTextView
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name" />
 
   </android.support.v7.widget.Toolbar>
 
