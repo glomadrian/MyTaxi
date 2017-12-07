@@ -29,7 +29,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:ellipsize="end"
-        android:maxWidth="200dp"
+        android:maxEms="20"
         android:lines="1"
         android:textColor="@color/pastel_black"
         android:textSize="@dimen/text_size_large"
@@ -39,10 +39,10 @@
         android:id="@+id/vehicleId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|left"
         android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:ellipsize="end"
         android:maxEms="10"
         android:maxLines="1"
@@ -57,9 +57,10 @@
       android:id="@+id/icon"
       android:layout_width="0dp"
       android:layout_height="0dp"
+      android:scaleX="-1"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/guideline3"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@id/guideline3"
       app:layout_constraintTop_toBottomOf="@id/guideline" />
 
   <android.support.constraint.Guideline
@@ -74,6 +75,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      app:layout_constraintGuide_percent="0.38" />
+      app:layout_constraintGuide_percent="0.62" />
 
 </android.support.constraint.ConstraintLayout>
