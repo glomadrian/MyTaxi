@@ -51,6 +51,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         bottomSheetBehavior = BottomSheetBehavior.from(vehicleInfoContainer)
         setupBottomSheetBehaviour()
         initMap()
+        updateVehicleView()
         initListeners()
         renderInfoAnimation()
     }
@@ -71,7 +72,6 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         mapFragment.getMapAsync { googleMap ->
             this.googleMap = googleMap
             initPresenter()
-            updateVehicleView()
         }
     }
 
