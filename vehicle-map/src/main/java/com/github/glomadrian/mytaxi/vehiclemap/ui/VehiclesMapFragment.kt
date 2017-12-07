@@ -3,6 +3,7 @@ package com.github.glomadrian.mytaxi.vehiclemap.ui
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.view.View
+import android.view.animation.AnimationUtils
 import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.extensions.replaceAndCommit
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
@@ -49,6 +50,13 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         setupBottomSheetBehaviour()
         initMap()
         initListeners()
+        renderInfoAnimation()
+    }
+
+    private fun renderInfoAnimation() {
+        val anim = AnimationUtils.loadAnimation(context, R.anim.bounce)
+        vehicleInfoContainer.animation = anim
+        anim.start()
     }
 
     private fun initPresenter() {
