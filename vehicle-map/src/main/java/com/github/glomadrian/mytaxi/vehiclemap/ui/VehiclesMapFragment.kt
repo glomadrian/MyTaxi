@@ -9,6 +9,7 @@ import com.github.glomadrian.mytaxi.corepresentation.extensions.replaceAndCommit
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
 import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
+import com.github.glomadrian.mytaxi.vehiclemap.extensions.mapIconFromSvgRes
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -28,6 +29,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     @Inject lateinit var presenter: VehicleMapPresenter
     private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment }
     private lateinit var googleMap: GoogleMap
+    private val markerIcon by lazy { context?.let { mapIconFromSvgRes(R.drawable.ic_marker, it) } }
 
     companion object {
         private const val MAP_ZOOM = 16.toFloat()
@@ -117,6 +119,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
             googleMap.addMarker(MarkerOptions()
                     .position(LatLng(vehicleLocation.latitude, vehicleLocation.longitude))
                     .visible(true)
+                    .icon(markerIcon)
                     .title(vehicleLocation.name)
             )
 
