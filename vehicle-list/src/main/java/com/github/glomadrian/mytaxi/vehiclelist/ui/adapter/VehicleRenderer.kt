@@ -1,24 +1,18 @@
 package com.github.glomadrian.mytaxi.vehiclelist.ui.adapter
 
 import android.view.ViewGroup
-import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.navigator.Navigator
 import com.github.glomadrian.mytaxi.corepresentation.navigator.vehiclesMapNavigationCommand
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiRenderer
-import com.github.glomadrian.mytaxi.vehiclelist.di.DaggerVehicleListComponent
+import com.github.glomadrian.mytaxi.vehiclelist.di.vehicleListInjector
 import com.github.glomadrian.mytaxi.vehiclelist.presentation.model.ListableVehicleViewModel
+import com.github.salomonbrys.kodein.instance
 import kotlinx.android.synthetic.main.vehicle_view.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import javax.inject.Inject
 
 abstract class VehicleRenderer(parent: ViewGroup) : MyTaxiRenderer<ListableVehicleViewModel>(parent) {
 
-    @Inject lateinit var navigator: Navigator
-
-    override fun doInjection(applicationComponent: ApplicationComponent) {
-        val component = DaggerVehicleListComponent.builder().applicationComponent(applicationComponent).build()
-        component.inject(this)
-    }
+    private val navigator: Navigator = vehicleListInjector.instance()
 
     override fun render(viewModel: ListableVehicleViewModel) {
         initializeListeners(viewModel)

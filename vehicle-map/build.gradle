@@ -7,8 +7,6 @@ dependencies {
   implementation grav
   implementation googleMaps
 
-  kapt daggerAnotationProcessor
-
   testImplementation junit
   androidTestImplementation runner
   androidTestImplementation espressoCore

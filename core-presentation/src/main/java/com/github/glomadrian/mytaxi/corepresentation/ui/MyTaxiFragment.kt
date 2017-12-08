@@ -6,18 +6,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.glomadrian.mytaxi.corepresentation.app.MyTaxiApplication
-import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 
-abstract class MyTaxiFragment: Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        context?.let {
-            val applicationComponent = (it.applicationContext as MyTaxiApplication).applicationComponent
-            doInjection(applicationComponent)
-        }
-    }
+abstract class MyTaxiFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(onRequestLayoutResource(), container, false)
@@ -33,8 +23,6 @@ abstract class MyTaxiFragment: Fragment() {
         super.onDestroy()
         onDetachPresenter()
     }
-
-    protected abstract fun doInjection(applicationComponent: ApplicationComponent)
 
     @LayoutRes
     abstract fun onRequestLayoutResource(): Int

@@ -16,8 +16,6 @@ dependencies {
   api cardView
   api anko
 
-  kapt daggerAnotationProcessor
-
   testImplementation junit
   androidTestImplementation runner
   androidTestImplementation espressoCore

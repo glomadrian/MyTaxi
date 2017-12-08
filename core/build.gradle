@@ -6,8 +6,7 @@ dependencies {
   api kotlinStdLib
   api coroutinesCore
   api coroutinesReactive
-
-  kapt daggerAnotationProcessor
+  api kodein
 }
 repositories {
   mavenCentral()

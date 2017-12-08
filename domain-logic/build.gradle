@@ -4,8 +4,6 @@ dependencies {
   api project(":data")
   implementation project(":core")
 
-  kapt daggerAnotationProcessor
-
   testImplementation junit
 }
 

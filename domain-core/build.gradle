@@ -2,7 +2,6 @@ apply from: "${rootDir}/build-configuration/android-module-base.gradle"
 
 dependencies {
   implementation project (":core")
-  kapt daggerAnotationProcessor
 }
 repositories {
   mavenCentral()

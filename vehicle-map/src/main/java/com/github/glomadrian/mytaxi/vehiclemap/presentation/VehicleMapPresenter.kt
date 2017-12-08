@@ -7,9 +7,8 @@ import com.github.glomadrian.mytaxi.vehiclemap.presentation.mapper.toVehicleLoca
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
 import kotlinx.coroutines.experimental.launch
 import org.funktionale.tries.Try
-import javax.inject.Inject
 
-class VehicleMapPresenter @Inject constructor(
+class VehicleMapPresenter constructor(
         private val getAvailableVehiclesUseCase: GetAvailableVehiclesUseCase
 ) : Presenter<VehicleMapPresenter.View>() {
 

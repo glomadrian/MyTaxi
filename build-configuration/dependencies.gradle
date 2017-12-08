@@ -30,6 +30,7 @@ ext {
   espressoVersion = "3.0.1"
   androidTestVersion = "1.0.1"
   gravVersion = "1.1"
+  kodeinVersion = "4.1.0"
 
   funktionaleTry = "com.android.support:support-v4:$googleSupportLibraryVersion"
   design = "com.android.support:design:$googleSupportLibraryVersion"
@@ -62,7 +63,8 @@ ext {
   daggerAnotationProcessor = "com.google.dagger:dagger-compiler:$daggerVersion"
   supportV4 = "com.android.support:support-v4:$googleSupportLibraryVersion"
   picasso = "com.squareup.picasso:picasso:$picassoVersion"
-
+  grav = "com.github.glomadrian:Grav:$gravVersion"
+  kodein = "com.github.salomonbrys.kodein:kodein:$kodeinVersion"
   espressoCore = "com.android.support.test.espresso:espresso-core:${espressoVersion}"
   androidTestRules = "com.android.support.test:rules:${androidTestVersion}"
   androidTestRunner = "com.android.support.test:runner:${androidTestVersion}"
@@ -70,5 +72,5 @@ ext {
   espressoContrib = "com.android.support.test.espresso:espresso-contrib:${espressoVersion}"
   junit = "junit:junit:$junitVersion"
   runner = "com.android.support.test:runner:$runnerVersion"
-  grav = "com.github.glomadrian:Grav:$gravVersion"
+
 }

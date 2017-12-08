@@ -1,21 +1,21 @@
 package com.github.glomadrian.mytaxi.vehiclemap.ui
 
 import android.os.Bundle
-import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
-import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
+import com.github.glomadrian.mytaxi.vehiclemap.di.vehicleMapInjector
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleInfoPresenter
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.DriverViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleInfoViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.ui.picasso.CircleTransform
+import com.github.salomonbrys.kodein.instance
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.vehicle_info.*
 import org.jetbrains.anko.support.v4.withArguments
 import javax.inject.Inject
 
 class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
-    @Inject lateinit var presenter: VehicleInfoPresenter
+    private val presenter: VehicleInfoPresenter = vehicleMapInjector.instance()
     private val vehicleId by lazy { arguments?.getString(VehicleInfoFragment.VEHICLE_ID) }
 
     companion object {
@@ -25,10 +25,6 @@ class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
         fun newInstance(vehicleId: String) = VehicleInfoFragment().withArguments(
                 VEHICLE_ID to vehicleId
         )
-    }
-
-    override fun doInjection(applicationComponent: ApplicationComponent) {
-        DaggerVehicleMapComponent.builder().applicationComponent(applicationComponent).build().inject(this)
     }
 
     override fun onRequestLayoutResource() = R.layout.vehicle_info

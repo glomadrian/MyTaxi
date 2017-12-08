@@ -4,8 +4,6 @@ dependencies {
   implementation project(':core-presentation')
   implementation project(":core")
 
-  kapt daggerAnotationProcessor
-
   testImplementation junit
   androidTestImplementation runner
   androidTestImplementation espressoCore

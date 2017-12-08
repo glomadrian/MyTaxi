@@ -7,8 +7,6 @@ dependencies {
   implementation okHttp
   implementation gsonConverter
 
-  kapt daggerAnotationProcessor
-
   testImplementation junit
   androidTestImplementation runner
   androidTestImplementation espressoCore

@@ -3,17 +3,16 @@ package com.github.glomadrian.mytaxi.vehiclemap.ui
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
-import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
 import com.github.glomadrian.mytaxi.corepresentation.extensions.replaceAndCommit
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
-import com.github.glomadrian.mytaxi.vehiclemap.di.DaggerVehicleMapComponent
+import com.github.glomadrian.mytaxi.vehiclemap.di.vehicleMapInjector
 import com.github.glomadrian.mytaxi.vehiclemap.extensions.mapIconFromSvgRes
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel
+import com.github.salomonbrys.kodein.instance
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -24,12 +23,11 @@ import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.vehicles_map.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.withArguments
-import javax.inject.Inject
 
 class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
+    private val presenter: VehicleMapPresenter = vehicleMapInjector.instance()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     private val vehicleId by lazy { arguments?.getString(VEHICLE_ID) }
-    @Inject lateinit var presenter: VehicleMapPresenter
     private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment }
     private lateinit var googleMap: GoogleMap
     private val markerIcon by lazy { context?.let { mapIconFromSvgRes(R.drawable.ic_marker, it) } }
@@ -42,10 +40,6 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         fun newInstance(vehicleId: String) = VehiclesMapFragment().withArguments(
                 VEHICLE_ID to vehicleId
         )
-    }
-
-    override fun doInjection(applicationComponent: ApplicationComponent) {
-        DaggerVehicleMapComponent.builder().applicationComponent(applicationComponent).build().inject(this)
     }
 
     override fun onRequestLayoutResource() = R.layout.vehicles_map

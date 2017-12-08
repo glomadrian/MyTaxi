@@ -8,7 +8,7 @@ import com.github.glomadrian.mytaxi.vehiclelist.presentation.model.ListableVehic
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
 
-class VehicleListPresenter @Inject constructor(
+class VehicleListPresenter constructor(
         private val getAvailableVehiclesUseCase: GetAvailableVehiclesUseCase)
     : Presenter<VehicleListPresenter.View>() {
 

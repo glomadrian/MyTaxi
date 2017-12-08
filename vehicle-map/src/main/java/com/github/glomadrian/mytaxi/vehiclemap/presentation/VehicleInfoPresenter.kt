@@ -9,9 +9,8 @@ import com.github.glomadrian.mytaxi.vehiclemap.presentation.mapper.toDriverViewM
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.DriverViewModel
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleInfoViewModel
 import kotlinx.coroutines.experimental.launch
-import javax.inject.Inject
 
-class VehicleInfoPresenter @Inject constructor(
+class VehicleInfoPresenter constructor(
         private val getVehicleUseCase: GetVehicleUseCase,
         private val getDriverByVehicleIdUseCase: GetDriverByVehicleIdUseCase)
     : Presenter<VehicleInfoPresenter.View>() {
@@ -25,12 +24,12 @@ class VehicleInfoPresenter @Inject constructor(
         }
     }
 
-    private fun getVehicle(id: String) = bg{
+    private fun getVehicle(id: String) = bg {
         getVehicleUseCase.execute(id).map { mapToVehicleInfo(it) }
     }
 
     private fun getDriver(vehicleId: String) = bg {
-        getDriverByVehicleIdUseCase.execute(vehicleId).map { toDriverViewModel( it ) }
+        getDriverByVehicleIdUseCase.execute(vehicleId).map { toDriverViewModel(it) }
     }
 
     interface View {
