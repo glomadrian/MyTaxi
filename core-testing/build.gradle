@@ -1,0 +1,10 @@
+apply from: "${rootDir}/build-configuration/android-module-base.gradle"
+
+dependencies {
+  implementation project(":core")
+  implementation project(":core-presentation")
+
+  api junit
+  api mockito
+  api mockitoKotlin
+}
