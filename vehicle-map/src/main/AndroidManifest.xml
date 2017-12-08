@@ -2,12 +2,18 @@
           package="com.github.glomadrian.mytaxi.vehiclemap">
 
   <application>
-    <activity android:name="com.github.glomadrian.mytaxi.vehiclemap.ui.VehicleMapContainer">
+    <activity
+        android:name="com.github.glomadrian.mytaxi.vehiclemap.ui.VehicleMapContainer"
+        android:theme="@style/NoAnimationTransparent">
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
+
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="mytaxi" android:host="vehicles-map" />
+
+        <data
+            android:host="vehicles-map"
+            android:scheme="mytaxi" />
       </intent-filter>
     </activity>
   </application>
