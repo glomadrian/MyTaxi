@@ -1,10 +1,13 @@
 package com.github.glomadrian.mytaxi.vehiclemap.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.animation.AnimationUtils
+import com.github.glomadrian.mytaxi.core.MAIN
 import com.github.glomadrian.mytaxi.corepresentation.extensions.replaceAndCommit
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
@@ -21,8 +24,13 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.vehicles_map.*
+import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.runBlocking
+import org.funktionale.tries.Try
+import org.jetbrains.anko.coroutines.experimental.bg
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.withArguments
+import kotlin.coroutines.experimental.suspendCoroutine
 
 class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     private val presenter: VehicleMapPresenter = vehicleMapInjector.instance()
@@ -50,8 +58,8 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         initMap()
         updateVehicleView()
         initListeners()
-        renderInfoAnimation()
         initializeToolbar()
+        renderInfoAnimation(600)
     }
 
     private fun initializeToolbar() {
@@ -67,10 +75,13 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         toolbar.setNavigationOnClickListener { activity?.finish() }
     }
 
-    private fun renderInfoAnimation() {
+    private fun renderInfoAnimation(delay: Long) {
         val anim = AnimationUtils.loadAnimation(context, R.anim.bounce)
-        vehicleInfoContainer.animation = anim
-        anim.start()
+        Handler(Looper.getMainLooper()).postDelayed({
+            vehicleInfoContainer.animation = anim
+            anim.start()
+        }, delay)
+
     }
 
     private fun initPresenter() {
@@ -121,8 +132,8 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
                     .target(LatLng(latitude, longitude))
                     .zoom(MAP_ZOOM)
                     .build()
-            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
-            googleMap.moveCamera(CameraUpdateFactory.scrollBy(0.toFloat(), MAP_OFFSET_Y))
+            CameraUpdateFactory.newCameraPosition(cameraPosition)
+            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 600, null)
         }
     }
 
