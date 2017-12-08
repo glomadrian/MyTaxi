@@ -31,6 +31,7 @@ ext {
   androidTestVersion = "1.0.1"
   gravVersion = "1.1"
   kodeinVersion = "4.1.0"
+  googleMapsUtilsVersion = "0.5"
 
   funktionaleTry = "com.android.support:support-v4:$googleSupportLibraryVersion"
   design = "com.android.support:design:$googleSupportLibraryVersion"
@@ -72,5 +73,5 @@ ext {
   espressoContrib = "com.android.support.test.espresso:espresso-contrib:${espressoVersion}"
   junit = "junit:junit:$junitVersion"
   runner = "com.android.support.test:runner:$runnerVersion"
-
+  googleMapsUtils = "com.google.maps.android:android-maps-utils:$googleMapsUtilsVersion"
 }

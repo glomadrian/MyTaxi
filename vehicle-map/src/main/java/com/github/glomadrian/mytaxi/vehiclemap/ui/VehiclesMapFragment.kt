@@ -1,13 +1,10 @@
 package com.github.glomadrian.mytaxi.vehiclemap.ui
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.animation.AnimationUtils
-import com.github.glomadrian.mytaxi.core.MAIN
 import com.github.glomadrian.mytaxi.corepresentation.extensions.replaceAndCommit
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclemap.R
@@ -22,15 +19,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.clustering.ClusterManager
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.vehicles_map.*
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.runBlocking
-import org.funktionale.tries.Try
-import org.jetbrains.anko.coroutines.experimental.bg
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.withArguments
-import kotlin.coroutines.experimental.suspendCoroutine
 
 class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     private val presenter: VehicleMapPresenter = vehicleMapInjector.instance()
@@ -38,12 +31,13 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     private val vehicleId by lazy { arguments?.getString(VEHICLE_ID) }
     private val mapFragment by lazy { childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment }
     private lateinit var googleMap: GoogleMap
+    private lateinit var clusterManager: ClusterManager<VehicleLocationViewModel>
     private val markerIcon by lazy { context?.let { mapIconFromSvgRes(R.drawable.ic_marker, it) } }
 
     companion object {
         private const val MAP_ZOOM = 16.toFloat()
-        private const val MAP_OFFSET_Y = 60.toFloat()
         private const val VEHICLE_ID = "vehicle.id.key"
+        private const val CAMERA_MOV_TIME = 600
 
         fun newInstance(vehicleId: String) = VehiclesMapFragment().withArguments(
                 VEHICLE_ID to vehicleId
@@ -59,7 +53,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         updateVehicleView()
         initListeners()
         initializeToolbar()
-        renderInfoAnimation(600)
+        renderInfoAnimation()
     }
 
     private fun initializeToolbar() {
@@ -75,13 +69,10 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         toolbar.setNavigationOnClickListener { activity?.finish() }
     }
 
-    private fun renderInfoAnimation(delay: Long) {
+    private fun renderInfoAnimation() {
         val anim = AnimationUtils.loadAnimation(context, R.anim.bounce)
-        Handler(Looper.getMainLooper()).postDelayed({
-            vehicleInfoContainer.animation = anim
-            anim.start()
-        }, delay)
-
+        vehicleInfoContainer.animation = anim
+        anim.start()
     }
 
     private fun initPresenter() {
@@ -93,6 +84,12 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     private fun initMap() {
         mapFragment.getMapAsync { googleMap ->
             this.googleMap = googleMap
+            clusterManager = ClusterManager(context, googleMap)
+            googleMap.setOnCameraIdleListener(clusterManager)
+            googleMap.setOnMarkerClickListener(clusterManager)
+            context?.let {
+                clusterManager.renderer = TaxiMarkerRenderer(it, googleMap, clusterManager)
+            }
             initPresenter()
         }
     }
@@ -120,30 +117,28 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
     }
 
     override fun renderVehicleLocations(locations: List<VehicleLocationViewModel>) {
-        locations.forEach {
-            addMarkerForVehicle(it)
-        }
+        clusterManager.addItems(locations)
     }
 
     override fun renderSelectedLocation(selectedVehicle: VehicleLocationViewModel) {
-        addMarkerForVehicle(selectedVehicle).showInfoWindow()
+        googleMap.addMarker(MarkerOptions()
+                .position(LatLng(selectedVehicle.latitude, selectedVehicle.longitude))
+                .visible(true)
+                .icon(markerIcon)
+                .title(selectedVehicle.name))
+        moveCameraToSelectedVehicle(selectedVehicle)
+    }
+
+    private fun moveCameraToSelectedVehicle(selectedVehicle: VehicleLocationViewModel) {
         selectedVehicle.apply {
             val cameraPosition = CameraPosition.builder()
                     .target(LatLng(latitude, longitude))
                     .zoom(MAP_ZOOM)
                     .build()
             CameraUpdateFactory.newCameraPosition(cameraPosition)
-            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 600, null)
+            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), CAMERA_MOV_TIME, null)
         }
     }
-
-    private fun addMarkerForVehicle(vehicleLocation: VehicleLocationViewModel) =
-            googleMap.addMarker(MarkerOptions()
-                    .position(LatLng(vehicleLocation.latitude, vehicleLocation.longitude))
-                    .visible(true)
-                    .icon(markerIcon)
-                    .title(vehicleLocation.name)
-            )
 
     private fun updateVehicleView() {
         vehicleId?.let {
