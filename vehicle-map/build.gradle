@@ -8,12 +8,11 @@ android {
 
 dependencies {
   implementation project(':core-presentation')
-  implementation project(':testing-presentation')
   implementation project(":core")
-
   implementation grav
   implementation googleMaps
 
+  testImplementation project(':testing-presentation')
   testImplementation junit
   androidTestImplementation runner
   androidTestImplementation espressoCore
