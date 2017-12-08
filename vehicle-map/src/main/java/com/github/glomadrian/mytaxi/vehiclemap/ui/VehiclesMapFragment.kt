@@ -2,6 +2,8 @@ package com.github.glomadrian.mytaxi.vehiclemap.ui
 
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
+import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.github.glomadrian.mytaxi.corepresentation.di.component.ApplicationComponent
@@ -18,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.vehicles_map.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.withArguments
@@ -54,6 +57,20 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
         updateVehicleView()
         initListeners()
         renderInfoAnimation()
+        initializeToolbar()
+    }
+
+    private fun initializeToolbar() {
+        val activity = activity
+        if (activity is AppCompatActivity) {
+            activity.setSupportActionBar(toolbar)
+            activity.supportActionBar?.apply {
+                setDisplayShowHomeEnabled(true)
+                setDisplayHomeAsUpEnabled(true)
+                setDisplayShowTitleEnabled(false)
+            }
+        }
+        toolbar.setNavigationOnClickListener { activity?.finish() }
     }
 
     private fun renderInfoAnimation() {
