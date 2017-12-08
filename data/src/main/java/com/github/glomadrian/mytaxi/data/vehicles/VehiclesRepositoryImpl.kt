@@ -4,7 +4,7 @@ import com.github.glomadrian.mytaxi.data.vehicles.datasource.VehicleCloudDataSou
 import com.github.glomadrian.mytaxi.data.vehicles.datasource.VehicleMemoryDataSource
 import com.github.glomadrian.mytaxi.domaincore.repository.VehicleRepository
 
-internal class VehiclesRepositoryImpl constructor(
+class VehiclesRepositoryImpl constructor(
         private val vehicleCloudDataSource: VehicleCloudDataSource,
         private val vehicleMemoryDataSource: VehicleMemoryDataSource) : VehicleRepository {
 

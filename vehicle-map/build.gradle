@@ -1,7 +1,14 @@
 apply from: "${rootDir}/build-configuration/android-module-base.gradle"
 
+android {
+  sourceSets {
+    test.java.srcDirs += 'src/integration/java'
+  }
+}
+
 dependencies {
   implementation project(':core-presentation')
+  implementation project(':core-testing')
   implementation project(":core")
 
   implementation grav

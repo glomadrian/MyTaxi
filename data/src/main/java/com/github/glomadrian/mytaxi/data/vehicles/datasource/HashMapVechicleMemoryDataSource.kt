@@ -5,7 +5,7 @@ import com.github.glomadrian.mytaxi.core.exception.CoreException
 import com.github.glomadrian.mytaxi.domaincore.model.Vehicle
 import org.funktionale.tries.Try
 
-internal class HashMapVechicleMemoryDataSource : VehicleMemoryDataSource {
+class HashMapVechicleMemoryDataSource : VehicleMemoryDataSource {
     private val vehiclesMap = mutableMapOf<String, Vehicle>()
 
     override fun store(vehicles: List<Vehicle>) {

@@ -6,7 +6,7 @@ import com.github.glomadrian.mytaxi.domaincore.model.GeoLocation
 import com.github.glomadrian.mytaxi.domaincore.model.Status
 import com.github.glomadrian.mytaxi.domaincore.model.Vehicle
 
-internal fun toDomain(source: VehicleApiModel) = Vehicle(
+fun toDomain(source: VehicleApiModel) = Vehicle(
         source.vin,
         source.name,
         source.address,

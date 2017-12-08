@@ -3,7 +3,6 @@ apply from: "${rootDir}/build-configuration/android-module-base.gradle"
 android {
   sourceSets {
     test.java.srcDirs += 'src/integration/java'
-    test.resources.srcDirs += 'src/integration/res'
   }
 }
 
