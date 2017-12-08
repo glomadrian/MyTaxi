@@ -8,7 +8,7 @@ android {
 
 dependencies {
   implementation project(':core-presentation')
-  implementation project(':core-testing')
+  implementation project(':testing-presentation')
   implementation project(":core")
 
   implementation grav

@@ -1,7 +1,7 @@
 package com.github.glomadrian.mytaxi.vehiclemap
 
-import com.github.glomadrian.mytaxi.coretesting.IntegrationTest
-import com.github.glomadrian.mytaxi.coretesting.responses.mytaxiapi.enqueueValidVehicleResponse
+import com.github.glomadrian.mytaxi.testingpresentation.IntegrationTest
+import com.github.glomadrian.mytaxi.testingpresentation.responses.mytaxiapi.enqueueValidVehicleResponse
 import com.github.glomadrian.mytaxi.vehiclemap.di.injector
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.VehicleMapPresenter
 import com.github.glomadrian.mytaxi.vehiclemap.presentation.model.VehicleLocationViewModel

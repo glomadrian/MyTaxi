@@ -1,7 +1,7 @@
 package com.github.glomadrian.mytaxi.vehiclelist
 
-import com.github.glomadrian.mytaxi.coretesting.IntegrationTest
-import com.github.glomadrian.mytaxi.coretesting.responses.mytaxiapi.enqueueValidVehicleResponse
+import com.github.glomadrian.mytaxi.testingpresentation.IntegrationTest
+import com.github.glomadrian.mytaxi.testingpresentation.responses.mytaxiapi.enqueueValidVehicleResponse
 import com.github.glomadrian.mytaxi.vehiclelist.di.injector
 import com.github.glomadrian.mytaxi.vehiclelist.presentation.VehicleListPresenter
 import com.github.salomonbrys.kodein.instance
@@ -26,5 +26,4 @@ class VehicleListPresenterIntegrationTest : IntegrationTest() {
 
         verify(view).renderVehicles(any())
     }
-
 }

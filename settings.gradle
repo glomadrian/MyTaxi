@@ -1,1 +1,2 @@
-include ':app', ':core', ':api', ':core-presentation', ':domain-logic', ':domain-core', ':data', ':vehicle-list', ':custom-views', ':vehicle-map', ':core-testing'
+include ':app', ':core', ':api', ':core-presentation', ':domain-logic', ':domain-core', ':data', ':vehicle-list', ':custom-views', ':vehicle-map',
+    ':testing-presentation'

@@ -1,6 +1,6 @@
 package com.github.glomadrian.mytaxi.vehiclemap
 
-import com.github.glomadrian.mytaxi.coretesting.IntegrationTest
+import com.github.glomadrian.mytaxi.testingpresentation.IntegrationTest
 import com.github.glomadrian.mytaxi.data.vehicles.datasource.VehicleMemoryDataSource
 import com.github.glomadrian.mytaxi.domaincore.model.Engine
 import com.github.glomadrian.mytaxi.domaincore.model.GeoLocation

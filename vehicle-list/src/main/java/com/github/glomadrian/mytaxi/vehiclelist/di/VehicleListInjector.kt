@@ -5,5 +5,5 @@ import com.github.salomonbrys.kodein.Kodein
 
 val vehicleListInjector = Kodein{
     extend(applicationInjector)
-    import(vehicleListGrahp)
+    import(vehicleListGraph)
 }

@@ -10,7 +10,7 @@ dependencies {
   implementation project(':core-presentation')
   implementation project(":core")
 
-  testImplementation project(":core-testing")
+  testImplementation project(':testing-presentation')
   androidTestImplementation runner
   androidTestImplementation espressoCore
 }

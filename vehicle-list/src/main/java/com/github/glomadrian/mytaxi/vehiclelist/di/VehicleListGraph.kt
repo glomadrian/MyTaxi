@@ -6,6 +6,6 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 
-val vehicleListGrahp = Kodein.Module{
+val vehicleListGraph = Kodein.Module{
     bind<VehicleListPresenter>() with provider { VehicleListPresenter(instance()) }
 }

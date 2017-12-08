@@ -6,6 +6,8 @@ dependencies {
   implementation project(":core")
 
   testImplementation junit
+  testImplementation mockito
+  testImplementation mockitoKotlin
 }
 
 repositories {
