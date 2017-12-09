@@ -6,12 +6,11 @@ The selected architecture is Clean architecture with MVP pattern, you will found
 
 ![Clean Architecture](art/CleanSample.png)
 
-
 ### Modules organization
 
 In order to improve the compilations times and the code organised i try an aproach with several modules for features and shared code between features
 
-- The team work, every team work on their own feture module
+- The team work, every team work on their own feature module
 
 - Compilation time, just compile the module that changes
 
