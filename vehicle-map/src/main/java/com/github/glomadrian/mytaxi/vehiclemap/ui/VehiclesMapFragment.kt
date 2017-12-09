@@ -126,6 +126,7 @@ class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
                 .visible(true)
                 .icon(markerIcon)
                 .title(selectedVehicle.name))
+                .showInfoWindow()
         moveCameraToSelectedVehicle(selectedVehicle)
     }
 
