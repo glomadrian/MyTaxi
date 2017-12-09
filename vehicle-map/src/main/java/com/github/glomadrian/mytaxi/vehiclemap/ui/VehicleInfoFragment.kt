@@ -15,6 +15,7 @@ import org.jetbrains.anko.support.v4.withArguments
 import javax.inject.Inject
 
 class VehicleInfoFragment : MyTaxiFragment(), VehicleInfoPresenter.View {
+
     private val presenter: VehicleInfoPresenter = vehicleMapInjector.instance()
     private val vehicleId by lazy { arguments?.getString(VehicleInfoFragment.VEHICLE_ID) }
 

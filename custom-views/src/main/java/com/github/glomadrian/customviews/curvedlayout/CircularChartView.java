@@ -26,7 +26,6 @@ public class CircularChartView extends View {
   private static final float VALUE_NOT_DEFINED = -1;
   private static final String PERCENT_TEXT = "%";
   private static final String NOT_DEFINED_TEXT = "-";
-  // US locale in order to always use "." as point separator
   private static final Locale FORMAT_LOCALE = java.util.Locale.US;
   private static final String FORMAT_FLOAT_PRECISION = "%.2f";
   private float strokeWidth = 60;

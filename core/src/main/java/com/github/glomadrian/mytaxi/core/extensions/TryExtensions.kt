@@ -1,4 +1,4 @@
-package com.github.glomadrian.mytaxi.core.di.extensions
+package com.github.glomadrian.mytaxi.core.extensions
 
 import org.funktionale.tries.Try
 

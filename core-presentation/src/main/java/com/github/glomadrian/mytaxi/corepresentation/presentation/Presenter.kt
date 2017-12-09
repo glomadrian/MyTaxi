@@ -1,7 +1,6 @@
 package com.github.glomadrian.mytaxi.corepresentation.presentation
 
 import com.github.glomadrian.mytaxi.core.BACKGROUND
-import com.github.glomadrian.mytaxi.core.MAIN
 import kotlinx.coroutines.experimental.*
 import kotlin.coroutines.experimental.CoroutineContext
 

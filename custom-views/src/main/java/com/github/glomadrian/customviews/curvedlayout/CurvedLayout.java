@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import com.github.glomadrian.customviews.R;
 
 public class CurvedLayout extends FrameLayout {
+
   private Path basePath;
   private Path strokePath;
   private Paint basePaint;

@@ -26,6 +26,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.withArguments
 
 class VehiclesMapFragment : MyTaxiFragment(), VehicleMapPresenter.View {
+
     private val presenter: VehicleMapPresenter = vehicleMapInjector.instance()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     private val vehicleId by lazy { arguments?.getString(VEHICLE_ID) }

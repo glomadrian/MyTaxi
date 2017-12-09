@@ -1,11 +1,12 @@
 package com.github.glomadrian.mytaxi.data.vehicles.datasource
 
-import com.github.glomadrian.mytaxi.core.di.extensions.toTry
+import com.github.glomadrian.mytaxi.core.extensions.toTry
 import com.github.glomadrian.mytaxi.core.exception.CoreException
 import com.github.glomadrian.mytaxi.domaincore.model.Vehicle
 import org.funktionale.tries.Try
 
-class HashMapVechicleMemoryDataSource : VehicleMemoryDataSource {
+class HashMapVehicleMemoryDataSource : VehicleMemoryDataSource {
+
     private val vehiclesMap = mutableMapOf<String, Vehicle>()
 
     override fun store(vehicles: List<Vehicle>) {

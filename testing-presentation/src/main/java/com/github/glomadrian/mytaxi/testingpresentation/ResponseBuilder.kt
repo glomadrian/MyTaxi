@@ -5,6 +5,7 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.SocketPolicy
 
 class ResponseBuilder @JvmOverloads constructor(code: Int = HttpURLConnection.HTTP_OK) {
+
     private val response: MockResponse = MockResponse()
 
     companion object {

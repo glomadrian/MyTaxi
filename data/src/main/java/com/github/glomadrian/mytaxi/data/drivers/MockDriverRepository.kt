@@ -1,6 +1,6 @@
 package com.github.glomadrian.mytaxi.data.drivers
 
-import com.github.glomadrian.mytaxi.core.di.extensions.toTry
+import com.github.glomadrian.mytaxi.core.extensions.toTry
 import com.github.glomadrian.mytaxi.domaincore.model.Driver
 import com.github.glomadrian.mytaxi.domaincore.repository.DriverRepository
 import java.util.*
