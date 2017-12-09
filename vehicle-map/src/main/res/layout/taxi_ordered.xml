@@ -2,17 +2,13 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
+                                             android:background="@drawable/order_modal_background"
                                              android:layout_width="300dp"
                                              android:layout_height="300dp">
 
-  <android.support.v7.widget.AppCompatImageView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:srcCompat="@mipmap/city" />
-
   <android.support.v7.widget.AppCompatTextView
       android:id="@+id/text"
-      android:layout_width="wrap_content"
+      android:layout_width="120dp"
       android:layout_height="wrap_content"
       android:layout_marginEnd="8dp"
       android:layout_marginStart="8dp"
@@ -20,30 +16,30 @@
       android:gravity="center"
       android:text="@string/taxi_ordered"
       android:textColor="@color/gray"
-      android:textSize="@dimen/text_size_x_large"
+      android:textSize="@dimen/text_size_xx_large"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent" />
+      app:layout_constraintTop_toTopOf="parent" />
 
   <android.support.v7.widget.AppCompatImageView
       android:id="@+id/car"
       android:layout_width="80dp"
       android:layout_height="40dp"
-      android:layout_marginLeft="24dp"
       android:layout_marginStart="24dp"
-      app:layout_constraintBottom_toTopOf="@id/guideline3"
+      app:layout_constraintBottom_toTopOf="@id/ground"
       app:layout_constraintStart_toStartOf="parent"
-      app:srcCompat="@drawable/ic_taxi" />
+      app:srcCompat="@drawable/ic_taxi"
+      android:layout_marginLeft="24dp" />
 
   <com.github.glomadrian.grav.GravView
       android:id="@+id/grav"
       android:layout_width="match_parent"
-      android:layout_height="90dp"
+      android:layout_height="150dp"
       app:animationGenerators="@array/runAnimations"
       app:array_colors="@array/wind"
       app:colorGenerator="com.github.glomadrian.grav.generator.paint.ArrayColorGenerator"
       app:gravGenerator="com.github.glomadrian.grav.generator.grav.RectangleGenerator"
-      app:layout_constraintBottom_toTopOf="@id/guideline3"
+      app:layout_constraintBottom_toTopOf="@id/ground"
       app:pointGenerator="com.github.glomadrian.grav.generator.point.RegularPointGenerator"
       app:rectangle_height="2dp"
       app:rectangle_width="15dp"
@@ -53,13 +49,15 @@
       app:shake_variance="5dp"
       app:side_to_side_direction="rightToLeft"
       app:side_to_side_max_duration="800"
-      app:side_to_side_min_duration="400" />
+      app:side_to_side_min_duration="400"
+      />
 
-  <android.support.constraint.Guideline
-      android:id="@+id/guideline3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.81" />
+  <View
+      android:id="@+id/ground"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginBottom="25dp"
+      android:background="@color/gray"
+      android:layout_width="match_parent"
+      android:layout_height="1dp" />
 
 </android.support.constraint.ConstraintLayout>

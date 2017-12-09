@@ -9,7 +9,3 @@ dependencies {
   testImplementation mockito
   testImplementation mockitoKotlin
 }
-
-repositories {
-  mavenCentral()
-}

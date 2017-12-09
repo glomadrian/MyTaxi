@@ -6,7 +6,3 @@ dependencies {
 
   testImplementation junit
 }
-
-repositories {
-  mavenCentral()
-}

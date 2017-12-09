@@ -11,10 +11,4 @@ dependencies {
   implementation project(":core")
 
   testImplementation project(':testing-presentation')
-  androidTestImplementation runner
-  androidTestImplementation espressoCore
-}
-
-repositories {
-  mavenCentral()
 }

@@ -15,10 +15,4 @@ dependencies {
 
   testImplementation project(':testing-presentation')
   testImplementation junit
-  androidTestImplementation runner
-  androidTestImplementation espressoCore
-}
-
-repositories {
-  mavenCentral()
 }

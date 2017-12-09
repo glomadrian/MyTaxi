@@ -17,9 +17,4 @@ dependencies {
   api anko
 
   testImplementation junit
-  androidTestImplementation runner
-  androidTestImplementation espressoCore
-}
-repositories {
-  mavenCentral()
 }
