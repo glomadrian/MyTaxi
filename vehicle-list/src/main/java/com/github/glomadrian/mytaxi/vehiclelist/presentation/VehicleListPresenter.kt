@@ -14,9 +14,16 @@ class VehicleListPresenter constructor(
 
     fun onViewReady() {
         launch(MAIN) {
+            view?.showLoading()
             getAvailableVehicles().await()
-                    .onSuccess { view?.renderVehicles(it) }
-                    .onFailure { it.printStackTrace() }
+                    .onSuccess {
+                        view?.hideLoading()
+                        view?.renderVehicles(it)
+                    }
+                    .onFailure {
+                        view?.hideLoading()
+                        view?.showError()
+                    }
         }
     }
 
@@ -26,6 +33,9 @@ class VehicleListPresenter constructor(
 
     interface View {
         fun renderVehicles(vehicles: List<ListableVehicleViewModel>)
+        fun showLoading()
+        fun hideLoading()
+        fun showError()
     }
 }
 

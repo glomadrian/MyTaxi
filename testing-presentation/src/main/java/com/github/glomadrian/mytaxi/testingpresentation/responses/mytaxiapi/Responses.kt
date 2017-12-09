@@ -8,5 +8,8 @@ fun enqueueValidVehicleResponse(mockWebServer: MockWebServer) {
     mockWebServer.enqueue(ResponseBuilder().with200Ok().withBody(validVehicleResponseData).build())
 }
 
+fun enqueue404NotFoundResponse(mockWebServer: MockWebServer) {
+    mockWebServer.enqueue(ResponseBuilder().with404NotFound().build())
+}
 
 

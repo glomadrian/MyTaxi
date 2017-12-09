@@ -1,8 +1,10 @@
 package com.github.glomadrian.mytaxi.vehiclelist.ui
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.github.glomadrian.mytaxi.corepresentation.ui.MyTaxiFragment
 import com.github.glomadrian.mytaxi.vehiclelist.R
 import com.github.glomadrian.mytaxi.vehiclelist.di.vehicleListInjector
@@ -55,5 +57,19 @@ class VehicleListFragment: MyTaxiFragment(), VehicleListPresenter.View {
 
     override fun onDetachPresenter() {
         presenter.onDetach()
+    }
+
+    override fun showLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loading.visibility = View.GONE
+    }
+
+    override fun showError() {
+        view?.let {
+            Snackbar.make(it, R.string.generic_error, Snackbar.LENGTH_SHORT)
+        }
     }
 }

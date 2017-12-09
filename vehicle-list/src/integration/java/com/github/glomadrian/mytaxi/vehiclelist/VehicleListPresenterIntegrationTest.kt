@@ -1,6 +1,7 @@
 package com.github.glomadrian.mytaxi.vehiclelist
 
 import com.github.glomadrian.mytaxi.testingpresentation.IntegrationTest
+import com.github.glomadrian.mytaxi.testingpresentation.responses.mytaxiapi.enqueue404NotFoundResponse
 import com.github.glomadrian.mytaxi.testingpresentation.responses.mytaxiapi.enqueueValidVehicleResponse
 import com.github.glomadrian.mytaxi.vehiclelist.di.injector
 import com.github.glomadrian.mytaxi.vehiclelist.presentation.VehicleListPresenter
@@ -25,5 +26,15 @@ class VehicleListPresenterIntegrationTest : IntegrationTest() {
         presenter.onViewReady()
 
         verify(view).renderVehicles(any())
+    }
+
+    @Test
+    fun shouldRenderErrorWhenRequestFail() {
+        enqueue404NotFoundResponse(mockWebServer)
+        presenter.onAttach(view)
+
+        presenter.onViewReady()
+
+        verify(view).showError()
     }
 }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import com.github.glomadrian.mytaxi.vehiclelist.presentation.model.ListableVehicleViewModel
 
 class VehicleAdapter : RecyclerView.Adapter<VehicleAdapter.VehicleViewHolder>() {
+
     private val vehiclesViewModels by lazy { mutableListOf<ListableVehicleViewModel>() }
 
     companion object {
