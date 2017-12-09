@@ -13,7 +13,7 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.funktionale.tries.Try
 import org.junit.Test
 
-class VehicleMapPresenterTest: UnitTest() {
+class   VehicleMapPresenterTest: UnitTest() {
 
     companion object {
         private const val VEHICLE_ID = "WME4513341K565439"
