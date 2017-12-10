@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
   compileSdkVersion androidTargetSdkVersion
+  buildToolsVersion androidBuildToolsVersion
+
   defaultConfig {
     applicationId "com.github.glomadrian.mytaxi"
     minSdkVersion androidMinimumSdkVersion
