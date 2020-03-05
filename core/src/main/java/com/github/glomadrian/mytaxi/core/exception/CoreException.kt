@@ -5,6 +5,5 @@ sealed class CoreException : Exception() {
     class Network : CoreException()
     class Unknown : CoreException()
     class UnknownHost : CoreException()
-    class Danger: CoreException()
     class Timeout : CoreException()
 }
